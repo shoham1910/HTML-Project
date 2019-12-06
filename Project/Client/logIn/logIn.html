@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="StyleLogIn.css" />
+<title>Page Title</title>
+
+</head>
+<body>
+ 
+<br><br>
+<div id="out_div"" >
+<h1  id="logg" style="text-align:center; color:#158298;"> Log In to Your Account</h1>
+
+<div style= "text-align:center;">
+<form action=" /action_page.php" method="post" autocomplete="on">
+
+<div class="alert" id="alert-msg" style= "text-align:left";> Username or password invalid </div>
+<br>
+User Name:<input class="text_fields" id="username" type="text" name="userName" required> <br> <br>
+Password :<input class="text_fields" id="password" type="password" name="password" autocomplete="off" 
+			placeholder="Use 6 or more a-z ,A-Z ,0-9 & symbols" required> <br>
+
+<a href="..\\forgotPassword\\forgotPassword.html">Forgot password?</a> <br> <br>
+
+
+<button id="butt" onclick="return submitClick()">LOG IN</button>
+
+<p>Need an account?  <a href="..\\signUp\\signUp.html">Sign up</a></p> 
+
+
+</form>
+<p style= "text-align:right";><a href="..\\contact\\contact.html">Contact Us</a></p> 
+
+</div>
+
+
+</div>
+<script src=ScriptLogIn.js></script>
+</body>
+</html>
+
+

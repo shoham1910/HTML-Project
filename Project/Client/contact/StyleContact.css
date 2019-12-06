@@ -1,0 +1,56 @@
+body {
+    background-image: url("..\\..\\Images\\view.jpg");
+    background-color: white;
+}
+
+
+#logg, #butt{	 text-shadow: 3px 0px 0px #aaa,
+             1px 3px 1px rgba(0,0,0,0.9),
+             4px 4px 5px rgba(0,0,0,0.2),
+             0px 0px 2px rgba(0,0,0,0.2);
+			 
+			 font-family:courier New; 
+	}
+	
+#out_div{opacity:1; 
+         position:relative; 
+		 top:100px; 
+		 background-color:rgba(255, 255, 255, 0.7);  
+		 border:5px solid #158298;
+         width:50%;
+         left:25%;
+}
+
+.inputs{margin: -8px;
+	width:200px;}
+
+#comment{width:350px;}
+form#form {
+    margin-top: 30;
+}
+img#telephone {
+    vertical-align: middle;
+    border-style: none;
+    padding: 30px;
+    margin-top: -30;
+}
+
+img#location{
+    vertical-align: middle;
+    border-style: none;
+    margin-top: -60px;
+    padding: 30px;
+}
+img#clerk{padding: 30px;
+}
+
+h1{text-align:center;}
+
+#reason{text-align:left;}
+
+input.text_fields
+{color:grey; 
+border-color:#158298;
+width: 250px;
+}
+
