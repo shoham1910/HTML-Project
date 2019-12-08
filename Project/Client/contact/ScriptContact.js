@@ -1,6 +1,16 @@
-function passwordOK()
+function sendOK()
 {
-	var pass=document.getElementById("password").value;
+	var name=document.getElementById("name").value;
+	var phone=document.getElementById("phone").value;
+	var mail=document.getElementById("Email").value;
+	var com=document.getElementById("comment").value;
+	var matches = name.match(/\d+/g);
+	if (name.length==0 || matches != null) {
+    	document.getElementById("name").style.borderColor="#712b29";
+	}
+	else{
+		document.getElementById("name").style.borderColor=
+	}
 	if(pass.length<6)
 		return false;
 	var i,up=0,low=0,num=0,spacial=0,l;

@@ -56,11 +56,11 @@ width: 250px;
 
 #alert-msg
 {
-    padding: 13px;
-    margin-left: -15px;
+    padding: 12px;
+    margin-left: -12px;
 	color: #712b29;
     background-color: #f7dddc;
     border-color: #f4cfce;
     font-weight: bold;
-
+    visibility: hidden;
 }
