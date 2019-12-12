@@ -30,14 +30,38 @@ function passwordOK()
 }
 function showAlert()
 {
-	var name=document.getElementById("username").value;
+	var email=document.getElementById("email").value;
 	var pass=document.getElementById("password").value;
-	if(name.length<3 || name.split().length!=1 || !passwordOK()){
+	var confirmm=document.getElementById("confirmm").value;
+	
+	if(!email.includes("@")||!email.includes(".co")||email.length<3 || email.split().length!=1 ) 
+	{   document.getElementById("alert-msg").style.visibility = "visible";
+	    document.getElementById("msg").innerHTML="invalid Email address";
+        return false;
+	}
+	
+	if(!passwordOK()){
+		
 		document.getElementById("alert-msg").style.visibility = "visible";
+		document.getElementById("msg").innerHTML="invalid password "; 
 		return false;
 	}
+	
+	if(confirmm.length!= pass.length)
+	{document.getElementById("alert-msg").style.visibility = "visible";
+	 document.getElementById("msg").innerHTML="confirmation failed "; 
+     return false;
+	}
+	
+	for(i=0;i<pass.length;i++) 
+	{if (confirmm[i]!=pass[i]) 
+		{window.alert("confirmation failed");
+	    return false;
+		}
+	}
+	
 	document.getElementById("alert-msg").style.visibility = "hidden";
-	window.alert("Username: "+name+"\n"+"Password: "+pass);
+	window.alert("You signed up successfully with your Email adress: "+email);
 	return true;
 }
 
