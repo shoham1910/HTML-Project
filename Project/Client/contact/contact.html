@@ -29,22 +29,23 @@
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-6">
-				<form id="form" action=" /action_page.php" method="get" autocomplete="off">
-					<input class="inputs" type="text" id="name" placeholder="Your Name"><br><br/>
-					<input class="inputs" type="email" id="Email" placeholder="Example@gmail.com"><br/><br/>
-					<input class="inputs" type="tel" id="phone" placeholder="Phone Number"><br/>
-					<br/>
-					<select class="inputs" id="reason" >
+				<form id="ContactForm" action=" /action_page.php" target="_blank" method="GET" autocomplete="off">
+					<div class="alert" id="alert-msg" style= "text-align:left";></div>
+					<input class="inputs" type="text" name="name" id="name" placeholder="Your Name"><br><br>
+					<input class="inputs" type="email" name="Email" id="Email" placeholder="Example@gmail.com"><br><br>
+					<input class="inputs" type="tel" name="phone" id="phone" placeholder="Phone Number"><br>
+					<br>
+					<select class="inputs" id="reason" name="reason">
 						<option value="Technical Support">Technical Support</option>
 						<option value="Account Access">Account Access</option>
 						<option value="Billing">Billing</option>
 						<option value="Business Partnerships">Business Partnerships</option>
 						<option value="Privacy Questions">Privacy Questions</option>
 						<option value="Other">Other</option>
-						</select><br/><br/>
-					<textarea class="inputs" rows="4" cols="5" id="comment" placeholder="Enter your comment here."></textarea><br/>
-					<br/><br/>
-				<button type="button" class="btn btn-primary">Send</button>
+					</select><br><br>
+					<textarea class="inputs" rows="4" cols="5" name="comment" id="comment" placeholder="Enter your comment here."></textarea><br>
+					<br><br>
+					<button type="submit" form="ContactForm" class="btn btn-primary" onclick="return submitClick()">Send</button>
 				</form>
 			</div>
 			<div class="col-md-5">
@@ -64,6 +65,7 @@
 	</div>
 
 </div>
+<script src=ScriptContact.js></script>
 </body>
 </html>
 
