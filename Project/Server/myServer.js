@@ -1,7 +1,8 @@
 var express = require('express');
 var path = require('path');
-var app = express();
 var fs = require('fs');
+var app = express();
+
 var port = 3000;
 var clientPath=path.join(__dirname,'..','Client');
 var imagePath=path.join(__dirname,'..','Images');
@@ -23,24 +24,6 @@ app.get('/', function(req, res) {
 // start the server
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
-
-
-
-// var http = require('http');
-// var url = require('url');
-// var fs = require('fs');
-// var express = require('express');
-// var bodyParser = require('body-parser');
-// var app = express();
-// var port=3000;
-// app.use("/Client/contact",express.static("./Client/contact"));
-// app.use("/Client/logIn",express.static("."));
-
-// Client.get('/', function (req, res) {
-//   console.log(Client.mountpath) // /admin
-//   res.sendFile(__dirname+"logIn.html");
-// });
-
 
 
 // app.use(bodyParser.json()); // support json encoded bodies
