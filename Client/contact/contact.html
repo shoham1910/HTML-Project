@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="StyleContact.css" />
+<title>Page Title</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+
+</head>
+<body>
+ 
+ <div id="out_div">
+
+	<h1  id="logg" style="text-align:center; color:#158298;"> Contact Us</h1>
+	
+	<br><hr>
+	
+	<h2 style="text-align:center;">We Woul'd Love To Help You</h2>
+	
+	<div class="container" id="div_enterInfo">
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-6">
+				<form id="ContactForm" action='/contact/contact.html' method="POST" autocomplete="off">
+					<div class="alert" id="alert-msg" style= "text-align:left";></div>
+					<input class="inputs" type="text" name="name" id="name" placeholder="Your Name"><br><br>
+					<input class="inputs" type="email" name="Email" id="Email" placeholder="Example@gmail.com"><br><br>
+					<input class="inputs" type="tel" name="phone" id="phone" placeholder="Phone Number"><br>
+					<br>
+					<select class="inputs" id="reason" name="reason">
+						<option value="Technical Support">Technical Support</option>
+						<option value="Account Access">Account Access</option>
+						<option value="Billing">Billing</option>
+						<option value="Business Partnerships">Business Partnerships</option>
+						<option value="Privacy Questions">Privacy Questions</option>
+						<option value="Other">Other</option>
+					</select><br><br>
+					<textarea class="inputs" rows="4" cols="5" name="comment" id="comment" placeholder="Enter your comment here."></textarea><br>
+					<br><br>
+					<button type="submit" form="ContactForm" class="btn btn-primary" onclick="return submitClick()" style="margin-top: -5px;">Send</button>
+				</form>
+			</div>
+			<div class="col-md-5">
+				<div>
+					<img id="clerk" src="..\..\Images\clerk.png"><button type="button" class="btn btn-dark">Contact Support</button>
+				</div>
+				<div>
+					<hr>
+					<img id="location" src="..\..\Images\location.PNG"><label><br/>Ort Braude collage<br/>Carmiel, Israel<br/>08:00-16:30 GMT+2</label>
+				</div>
+				<div>
+					<hr>
+					<img id="telephone" src="..\..\Images\telephone.png"><label><br/>+972-50-725-7735 Tamir<br/>+972-50-725-7735 Tamir</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script src=ScriptContact.js></script>
+</body>
+</html>
+
+
