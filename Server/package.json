@@ -1,0 +1,22 @@
+{
+  "name": "herotry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Server/myServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shoham1910/heroTry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoham1910/heroTry/issues"
+  },
+  "homepage": "https://github.com/shoham1910/heroTry#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

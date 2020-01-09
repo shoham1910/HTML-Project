@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 var myMail='contactourhtmlsite@gmail.com‬';
 var myPassword='T312576101‬';
 
-var clientPath=path.join(__dirname,'Client');
-var imagePath=path.join(__dirname,'Images');
+var clientPath=path.join(__dirname,'..','Client');
+var imagePath=path.join(__dirname,'..','Images');
 var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
