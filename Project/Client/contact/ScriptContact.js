@@ -23,7 +23,7 @@ function sendOK()
 		flag=true;
 		cnt++;
 	}
-	if (!(/^\d{10}$/)){
+	if (!(/^05\d{8}$/g).test(phone)){
 		document.getElementById("phone").style.borderColor="#712b29";
 		if(flag) str+=", Phone";
 		else str+=" Phone";

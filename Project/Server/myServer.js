@@ -1,17 +1,74 @@
-var http = require('http');
-var url = require('url');
+var express = require('express');
+var path = require('path');
 var fs = require('fs');
+var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 
-http.createServer(function (req, res) {
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
+var app = express();
+
+var port = 3000;
+var myMail='contactourhtmlsite@gmail.com‬';
+var myPassword='T312576101‬';
+
+var clientPath=path.join(__dirname,'..','Client');
+var imagePath=path.join(__dirname,'..','Images');
+var logInPath=path.join(clientPath,'logIn');
+var contactPath=path.join(clientPath,'contact');
+var signUpPath=path.join(clientPath,'signUp');
+
+app.use('/logIn',express.static(logInPath));
+app.use('/Images',express.static(imagePath));
+app.use('/contact',express.static(contactPath))
+app.use('/signUp',express.static(signUpPath))
+
+app.get('/', function(req, res) {
+  res.statusCode = 302;
+  res.setHeader("Location", "http://localhost:"+port+"/logIn/logIn.html");
+  res.end();
+});
+
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+app.post('/contact/contact.html', function(req, res) {
+  var name = req.param('name');
+  var mail = req.param('Email');
+  var phone = req.param('phone');
+  var reason = req.param('reason');
+  var comment = req.param('comment'); 
+  // res.end(JSON.stringify(req.body));
+  // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
+
+  var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user:myMail,
+          pass:myPassword
+      },
   });
-}).listen(3000);
+
+  var mailOptions = {
+      from: myMail,
+      to: mail,
+      subject: 'We Will Contact You About:',
+      text: 'Your comment about "+reason+" was sign into our system.\nYour comment is:\n"+comment'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+          console.log(error);
+      } else {
+          console.log('Email sent: ' + info.response);
+      }
+  });
+});
+
+
+// start the server
+app.listen(port);
+console.log('Server started! At http://localhost:' + port);
+
+
+
+
