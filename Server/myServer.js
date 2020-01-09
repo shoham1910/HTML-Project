@@ -21,11 +21,12 @@ app.use('/Images',express.static(imagePath));
 app.use('/contact',express.static(contactPath))
 app.use('/signUp',express.static(signUpPath))
 
-app.get('/', function(req, res) {
-  res.statusCode = 302;
-  res.setHeader("Location", "http://localhost:"+port+"/logIn/logIn.html");
-  res.end();
-});
+//app.get('/', function(req, res) {
+//  res.statusCode = 302;
+//  res.setHeader("Location", "/logIn/logIn.html");
+//  res.end();
+// });
+app.use("/login", express.static("./logIn/logIn.html"));
 
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -66,8 +67,7 @@ app.post('/contact/contact.html', function(req, res) {
 
 
 // start the server
-app.listen(port);
-console.log('Server started! At http://localhost:' + port);
+app.listen(port, () => console.log(`app listening on port ${port}!`));
 
 
 
