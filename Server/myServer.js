@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 
 var app = express();
+const port = process.env.PORT || 3000;
 
-var port = 3000;
 var myMail='contactourhtmlsite@gmail.com‬';
 var myPassword='T312576101‬';
 
