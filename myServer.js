@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 //app.get('/', function(req, res) {
 //res.statusCode = 302;
 //res.sendFile(__dirname + '/Client/logIn/logIn.html');
- res.sendFile(path.join(__dirname + 'Client/logIn/logIn.html'));
+ //res.sendFile(path.join(__dirname + 'Client/logIn/logIn.html'));
 //res.setHeader("Location", "Client/logIn/logIn.html");
 //res.setHeader("Location", "http://localhost:"+port+"/logIn/logIn.html");
 //res.end();
