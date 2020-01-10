@@ -25,7 +25,6 @@ app.use('/signUp',express.static(signUpPath))
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/Client/logIn/logIn.html');
-	res.sendFile(__dirname + '/Client/logIn/StyleLogIn');
 });
 
 //app.get('/', function(req, res) {
