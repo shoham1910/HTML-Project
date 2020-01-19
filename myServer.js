@@ -11,11 +11,24 @@ const port = process.env.PORT || 3000;
 var myMail='contactourhtmlsite@gmail.com‬';
 var myPassword='T312576101‬';
 
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://shoham1910:<password>@cluster0-bgarl.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 var clientPath=path.join(__dirname,'Client');
 var imagePath=path.join(__dirname,'Images');
 var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
+
+
+
 
 app.use('/logIn',express.static(logInPath));
 app.use('/Images',express.static(imagePath));
@@ -41,6 +54,17 @@ app.get('/signUp/logIn/logIn.html', (req, res) => {
    
 
 });
+
+app.get('/signUp/logIn/logIn.html', (req, res) => {
+	//res.sendFile(__dirname + './Client/logIn/logIn.html');
+   //res.sendFile(window.location.href + '/logIn/logIn.html');
+   res.statusCode=302;
+   res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
+   res.end();
+   
+
+});
+
 
 //app.get('/', function(req, res) {
 //res.statusCode = 302;
