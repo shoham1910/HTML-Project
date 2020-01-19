@@ -13,7 +13,7 @@ var myPassword='T312576101‬';
 
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://shoham1910:<password>@cluster0-bgarl.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://shoham1910:shoham956@cluster0-bgarl.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
