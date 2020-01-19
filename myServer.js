@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
    
 
 });
-app.get('/logIn/logIn.html', (req, res) => {
+app.get('/signUp/logIn/logIn.html', (req, res) => {
 	//res.sendFile(__dirname + './Client/logIn/logIn.html');
    //res.sendFile(window.location.href + '/logIn/logIn.html');
    res.statusCode=302;
