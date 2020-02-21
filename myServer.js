@@ -47,11 +47,11 @@ app.get('/signUp/logIn/logIn.html', (req, res) => {
 
 });
 
-app.get('/signUp/logIn/logIn.html', (req, res) => {
+app.get('/signUp/contact/contact.html', (req, res) => {
 	//res.sendFile(__dirname + './Client/logIn/logIn.html');
    //res.sendFile(window.location.href + '/logIn/logIn.html');
    res.statusCode=302;
-   res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
+   res.setHeader("Location","http://html-project2020.herokuapp.com"+"/contact/contact.html");
    res.end();
    
 
