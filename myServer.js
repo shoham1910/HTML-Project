@@ -47,7 +47,7 @@ app.get('/signUp/logIn/logIn.html', (req, res) => {
 
 });
 
-app.get('/signUp/contact/contact.html', (req, res) => {
+app.get('/signUp/contact.html', (req, res) => {
 	//res.sendFile(__dirname + './Client/logIn/logIn.html');
    //res.sendFile(window.location.href + '/logIn/logIn.html');
    res.statusCode=302;
