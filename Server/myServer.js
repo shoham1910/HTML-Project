@@ -3,6 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+const {Client}=require('pg');//equlast to: const Client=require('pg').Client
 
 var app = express();
 
@@ -17,6 +18,27 @@ var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
 
+const client=new Client({
+  user:'postgres',
+  password:'241218',
+  host:'localhost',
+  port: 5432,
+  database:'workDB'
+});
+
+async function execute(){
+    try{
+        await client.connect()
+        console.log("connected to DB")
+    }
+    catch(ex){
+        console.log('Failed to execute ${ex}')
+    }
+    finally{
+        await client.end
+    }
+}
+
 app.use('/logIn',express.static(logInPath));
 app.use('/Images',express.static(imagePath));
 app.use('/contact',express.static(contactPath))
@@ -25,6 +47,7 @@ app.use('/signUp',express.static(signUpPath))
 app.get('/', function(req, res) {
  res.statusCode = 302;
 res.setHeader("Location", "http://localhost:"+port+"/logIn/logIn.html");
+execute();
 res.end();
 });
 
@@ -64,6 +87,7 @@ app.post('/contact/contact.html', function(req, res) {
       }
   });
 });
+
 
 
 // start the server

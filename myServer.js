@@ -3,7 +3,14 @@ var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
-
+const {Client}=require('pg');//equlast to: const Client=require('pg').Client
+const client=new Client({
+  user:'postgres',
+  password:'241218',
+  host:'localhost',
+  port: 5432,
+  database:'workDB'
+});
 var app = express();
 
 const port = process.env.PORT || 3000;
@@ -19,8 +26,19 @@ var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
 
-
-
+execute();
+async function execute(){
+  try{
+      await client.connect()
+      console.log("connected to DB")
+  }
+  catch(ex){
+      console.log('Failed to execute ${ex}')
+  }
+  finally{
+      await client.end
+  }
+}
 
 app.use('/logIn',express.static(logInPath));
 app.use('/Images',express.static(imagePath));
