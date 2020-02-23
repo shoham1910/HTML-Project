@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" type="text/css" media="all" href="StyleLogIn.css" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ 
+<title>Login</title>
+
+</head>
+<body>
+ 
+<br><br>
+<div class="modal-dialog text-center">
+  <div class="col-sm-8 main-section">
+   <div   id="out_div"" >
+<h1  id="logg" style="text-align:center; color:#158298;"> Log In to Your Account</h1>
+
+<div style= "text-align:center;">
+<form action=" /action_page.php" method="post" autocomplete="on">
+
+<div class="alert" id="alert-msg" style= "text-align:left";> Username or password invalid 
+</div>
+
+<br>
+User Name:<input class="text_fields" id="username" type="text" name="userName" required> <br> <br>
+Password :<input class="text_fields" id="password" type="password" name="password" autocomplete="off" 
+			placeholder="Use 6 or more a-z ,A-Z ,0-9 & symbols" required> <br>
+
+<a href="..\forgotPassword\forgotPassword.html">Forgot password?</a> <br> <br>
+
+
+<button id="butt" onclick="return submitClick()">LOG IN</button>
+
+<p>Need an account?  <a href="..\signUp\signUp.html">Sign up</a></p> 
+
+
+</form>
+<p style= "text-align:right";><a href="..\contact\contact.html">Contact Us</a></p> 
+
+</div>
+
+
+</div>
+</div>
+</div>
+<script src=ScriptLogIn.js></script>
+</body>
+</html>
+
+

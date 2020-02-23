@@ -19,14 +19,14 @@ img{ opacity:0.3;}
     left: 50%;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.7);
-    width: 500px;
-    transform: translate(-50%,0%);
+    width: 400px;
+    transform: translate(-50%,9%);
     border: 5px solid #158298;
-	
 }		
 input.text_fields
 {color:grey; 
 border-color:#158298;
+width: 250px;
 }
 
 
@@ -40,7 +40,6 @@ border-color:#158298;
 div{ font-family:courier New; 
      color:green;
 	 text-align:center;
-	 
 
 }	 
 
@@ -49,11 +48,5 @@ div{ font-family:courier New;
 button{
         color:white; 
         background-color:#158298; 
-		padding: 5px;
-		width:380
-	
-		
-}
-
-a{ font-weight:bold;
+		padding: 5px 148px;
 }
