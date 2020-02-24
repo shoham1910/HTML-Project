@@ -43,5 +43,6 @@ function showAlert()
 
 function submitClick()
 {
-	return showAlert();
+	if(showAlert())
+		return "http://html-project2020.herokuapp.com/tables"
 }

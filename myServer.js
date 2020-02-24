@@ -25,44 +25,152 @@ var imagePath=path.join(__dirname,'Images');
 var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
+var tablesPath=path.join(clientPath,'tables');
 
-execute();
-async function execute(){
+
+
+
+app.use('/logIn',express.static(logInPath));
+app.use('/Images',express.static(imagePath));
+app.use('/contact',express.static(contactPath))
+app.use('/signUp',express.static(signUpPath))
+app.use('/tables',express.static(tablesPath))
+
+app.get('/Images/view.jpg',(req, res) =>{
+  res.sendFile(__dirname + './Images/view.jpg');
+  res.end();
+});
+
+app.get('/', async(req, res) => {
+  res.statusCode=302;
+  res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
+  res.end();
+});
+
+app.get('/tables', async(req, res) => {
+	//res.sendFile(__dirname + './Client/logIn/logIn.html');
+   //res.sendFile(window.location.href + '/logIn/logIn.html');
+   begin=`<!DOCTYPE  html>
+   <!-- saved from url=(0022)http://localhost:3000/ -->
+   <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Page Title</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   </head><style>body{background-image: url("Images/view.jpg");background-color:lavender;}
+   </style><body data-gr-c-s-loaded="true"><div><h1 style="color:lavender;text-align:center;">Users</h1></div>
+   <div class="container-fluid"><div class="row"><div class="col-sm-2"></div>
+   <div class="col-sm-8" style="background-color:white;"><table id="usersTable" class="table table-striped table-bordered" style="width:100%">
+   <thead><tr><th>Username</th><th>Password</th></tr></thead><tbody>`
+
+   usersTable= await loadUserData();
+
+   middle=`</tbody><tfoot><tr><th>Username</th><th>Password</th></tr></tfoot></table></div>
+   <div class="col-sm-2"></div></div><br><br><br><br><br><div><h1 style="color:lavender;text-align:center;">Data</h1></div>
+   <div class="row"><div class="col-sm-2"></div><div class="col-sm-8" style="background-color:white;">
+   <table id="usersDataTable" class="table table-striped table-bordered" style="width:100%">
+   <thead><tr><th>Username</th><th>Data1</th><th>Data2</th><th>Lat</th><th>Long</th></tr></thead><tbody>`
+
+   usersDataTable=await loadUsersDataTable();
+
+   last=`</tbody><tfoot><tr><th>Username</th><th>Data1</th><th>Data2</th><th>Lat</th><th>Long</th></tr>
+   </tfoot></table></div><div class="col-sm-2"></div></div></div>
+   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+   <script>$(document).ready(function() {$(`
+   last1='`#usersTable`'
+   last2=`).DataTable();});</script><script>$(document).ready(function() {$(`
+   last3='`#usersDataTable`'
+   last4=`).DataTable();});</script></body></html>`
+
+   res.setHeader("content-type","text/html");
+   res.send(`${begin}${usersTable}${middle}${usersDataTable}${last}${last1}${last2}${last3}${last4}`);
+   res.end();
+});
+async function connect(){
   try{
-      await client.connect()
-      console.log("connected to DB")
+    await client.connect();
+    console.log("connected to DB")
+  }
+  catch(er){
+    console.log(`connection error was discovered ${er}`);
+  }
+}
+
+async function executeUserQuery(){
+  try{
+      await connect();
+      const result=await client.query(`SELECT * FROM public."User"`)
+      
+      return result.rows;
   }
   catch(ex){
-      console.log('Failed to execute ${ex}')
+      console.log('Failed to execute '+ex)
   }
   finally{
       await client.end
   }
 }
 
-app.use('/logIn',express.static(logInPath));
-app.use('/Images',express.static(imagePath));
-app.use('/contact',express.static(contactPath))
-app.use('/signUp',express.static(signUpPath))
+async function executeDataQuery(){
+  try{
+      await connect();
+      const result=await client.query(`SELECT * FROM public."Data"`)
+      
+      return result.rows;
+  }
+  catch(ex){
+      console.log('Failed to execute '+ex)
+  }
+  finally{
+      await client.end
+  }
+}
+
+/*window.onload=()=>{
+  loadUserData();
+}*/
+
+async function loadUserData(){
+  usersData=await executeUserQuery();
+  console.log(usersData);
+  //const userTableData=document.getElementById('usersTable');
+  var usersDataHtml=``;
+  for(var i = 0; i < usersData.length; i++){
+    usersDataHtml+=`<tr><td>${usersData[i].Username}</td><td>${usersData[i].Password}</td></tr>`
+  }
+  
+  //userTableData.innerHTML=usersDataHtml;
+  return usersDataHtml;
+}
+
+async function loadUsersDataTable(){
+  usersData=await executeDataQuery();
+  console.log(usersData);
+  //const userTableData=document.getElementById('usersTable');
+  var usersDataHtml=``;
+  for(var i = 0; i < usersData.length; i++){
+    usersDataHtml+=`<tr><td>${usersData[i].Username}</td><td>${usersData[i].Data1}</td>
+    <td>${usersData[i].Data2}</td><td>${usersData[i].Lat}</td><td>${usersData[i].Long}</td></tr>`
+  }
+  
+  //userTableData.innerHTML=usersDataHtml;
+  return usersDataHtml;
+}
 
 
-app.get('/', (req, res) => {
-	//res.sendFile(__dirname + './Client/logIn/logIn.html');
-   //res.sendFile(window.location.href + '/logIn/logIn.html');
-   res.statusCode=302;
-   res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
-   res.end();
-   
 
-});
+
 app.get('/signUp/logIn/logIn.html', (req, res) => {
 	//res.sendFile(__dirname + './Client/logIn/logIn.html');
    //res.sendFile(window.location.href + '/logIn/logIn.html');
    res.statusCode=302;
    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
    res.end();
-   
-
 });
 
 app.get('/signUp/contact.html', (req, res) => {
@@ -71,8 +179,6 @@ app.get('/signUp/contact.html', (req, res) => {
    res.statusCode=302;
    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/contact/contact.html");
    res.end();
-   
-
 });
 
 

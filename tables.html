@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody id=usersTable>
+
+        </tbody>
+    </table>
+
+
+</body>
+<script>
+  const {Client}=require('pg');//equlast to: const Client=require('pg').Client
+  const client=new Client({
+    user:'postgres',
+    password:'241218',
+    host:'localhost',
+    port: 5432,
+    database:'workDB'
+  });
+  async function connect(){
+    try{
+      await client.connect();
+    }
+    catch(er){
+      console.log(`connection error was discovered ${er}`);
+    }
+  }
+
+  async function executeUserQuery(){
+    try{
+        await connect();
+        const result=await client.query(`SELECT * FROM public."User"`)
+        console.log("connected to DB")
+        return result.rows;
+    }
+    catch(ex){
+        console.log('Failed to execute '+ex)
+    }
+    finally{
+        await client.end
+    }
+  }
+
+  window.onload=()=>{
+    loadUserData();
+  }
+
+  function loadUserData(){
+    usersData=executeUserQuery();
+    const userTableData=document.getElementById('usersTable');
+    var usersDataHtml=``;
+    for(var i = 0; i < usersData.length; i++){
+      usersDataHtml+=`<tr><td>${usersData[i].Username}</td><td>${usersData[i].Password}</td></tr>`
+    }
+    console.log(usersDataHtml);
+    userTableData.innerHTML=usersDataHtml;
+  }
+
+</script>
+</html>

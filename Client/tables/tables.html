@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="Styletables.css" />
+<title>Page Title</title>
+
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody id=usersTable>
+
+        </tbody>
+    </table>
+
+
+</body>
+<script>
+    $(document).ready(function () {
+    $.getJSON(url,
+    function (json) {
+        var tr;
+        for (var i = 0; i < json.length; i++) {
+            tr = $('<tr/>');
+            tr.append("<td>" + json[i].Username + "</td>");
+            tr.append("<td>" + json[i].Password + "</td>");
+            $('usersTable').append(tr);
+        }
+    });
+});
+</script>
+</html>
