@@ -216,9 +216,7 @@ async function executeSearchQuery(un,ps){
   console.log(`${un}${ps}${un}${ps}`);
   answer=await executeSearchQuery(un,ps);
   console.log(answer);
-  i=answer;
-  console.log(`the number of i iiiiiiiiiii ${i}`);
-  if (1){
+  if (answer.length>0){
     res.statusCode=302;
     res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
     res.end();
