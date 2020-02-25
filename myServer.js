@@ -47,7 +47,7 @@ app.get('/', async(req, res) => {
   res.end();
 });
 
-function getTables(){
+async function getTables(){
    begin=`<!DOCTYPE  html>
    <!-- saved from url=(0022)http://localhost:3000/ -->
    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -261,7 +261,7 @@ async function executeSearchQuery(un,ps){
   try{
     if (answer.length>0){
       res.setHeader("content-type","text/html");
-      res.send(getTables());
+      res.send(await getTables());
       res.end();
     }
     else
