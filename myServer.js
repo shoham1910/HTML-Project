@@ -296,12 +296,18 @@ app.post('/contact/contact.html', function(req, res) {
       text: 'Your comment about "+reason+" was sign into our system.\nYour comment is:\n"+comment'
   };
 
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-          console.log(error);
-      } else {
-          console.log('Email sent: ' + info.response);
-      }
+
+  transporter.sendMail(mailOptions,function(error, info){
+        if (error){
+            console.log(error);
+            res.writeHead(404);
+            res.end();                    
+        }
+        else{
+            console.log('Email sent: ' + info.response);
+        } 
+		
+
   });
   res.end();
 });
