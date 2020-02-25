@@ -237,20 +237,17 @@ app.post('/contact/contact.html', function(req, res) {
   // res.end(JSON.stringify(req.body));
   // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
 
-  
-});
-
-var transporter = nodemailer.createTransport({
+  var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user:'shoham1910@gmail.com',
-          pass:'956shoham'
-      }
+          user:myMail,
+          pass:myPassword
+      },
   });
 
   var mailOptions = {
       from: myMail,
-      to: 'shoham1910@gmail.com',
+      to: mail,
       subject: 'We Will Contact You About:',
       text: 'Your comment about "+reason+" was sign into our system.\nYour comment is:\n"+comment'
   };
@@ -262,6 +259,8 @@ var transporter = nodemailer.createTransport({
           console.log('Email sent: ' + info.response);
       }
   });
+});
+
 
 // start the server
 app.listen(port);
