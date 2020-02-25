@@ -241,7 +241,7 @@ async function executeSearchQuery(un,ps){
       await connect();
       var pps="";
       for(var k=0;k<ps.length;k++ ){
-        pps+=ps.charAt(k)+3;
+        pps+=fromCharCode(ps.charCodeAt(k)+3);
       }
       console.log(`ps=${ps}  pps=${pps}`);
       const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${pps}'`)
