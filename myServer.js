@@ -195,6 +195,42 @@ app.get('/signUp/contact.html', (req, res) => {
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+async function executeInsertQuery(un,ps){
+  try{
+      await connect();
+      const resu=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${ps}'`)
+      if(resu.rows.length>0) return false;
+      await client.query(`INSERT INTO public."User"("Username", "Password") VALUES ('${un}', '${ps}');`)
+      
+      return true;
+  }
+  catch(ex){
+      console.log('Failed to execute '+ex)
+  }
+  finally{
+      await client.end
+  }
+}
+
+  app.post('/signUp/signUp.html', async function(req, res) {
+  var un=req.param('username');
+  var ps=req.param('password');
+  answer=await executeInsertQuery(un,ps);
+  console.log(answer);
+  if (answer){
+    res.statusCode=1111;
+    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/signUp/signUp.html");
+    res.end();
+  }
+  else
+  {
+    res.statusCode=404;
+    res.end();
+  }
+});
+
+
+
 async function executeSearchQuery(un,ps){
   try{
       await connect();
@@ -213,9 +249,7 @@ async function executeSearchQuery(un,ps){
   app.post('/logIn/logIn.html', async function(req, res) {
   var un=req.param('username');
   var ps=req.param('password');
-  console.log(`${un}${ps}${un}${ps}`);
   answer=await executeSearchQuery(un,ps);
-  console.log(answer);
   if (answer.length>0){
     res.statusCode=302;
     res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
