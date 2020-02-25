@@ -198,7 +198,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 async function executeSearchQuery(un,ps){
   try{
       await connect();
-      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"=${un} AND "User"."Password"=${ps}`)
+      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${ps}'`)
       
       return result.rows;
   }
