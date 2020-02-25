@@ -281,7 +281,11 @@ app.post('/contact/contact.html', function(req, res) {
   // res.end(JSON.stringify(req.body));
   // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
 
-  var transporter = nodemailer.createTransport({
+ 
+  res.end();
+});
+
+ var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
           user:'shoham1910@gmail.com',
@@ -309,10 +313,6 @@ app.post('/contact/contact.html', function(req, res) {
         } 
 
   });
-  res.end();
-});
-
-
 // start the server
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
