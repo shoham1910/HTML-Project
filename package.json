@@ -13,7 +13,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start":"npm install node-mailer"
   },
   "repository": {
     "type": "git",
