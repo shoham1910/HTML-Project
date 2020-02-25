@@ -216,7 +216,7 @@ async function executeSearchQuery(un,ps){
   console.log(`${un}${ps}${un}${ps}`);
   rows=await executeSearchQuery(un,ps);
   console.log(`${JSON.stringify(rows)}`);
-  if (rows.length>0){
+  if (JSON.stringify(rows).length>0){
     res.statusCode=302;
     res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
     res.end();
