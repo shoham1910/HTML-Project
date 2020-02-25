@@ -30,7 +30,7 @@ function passwordOK()
 }
 function showAlert()
 {
-	var email=document.getElementById("username").value;
+	var email=document.getElementById("email").value;
 	var pass=document.getElementById("password").value;
 	var confirmm=document.getElementById("confirmm").value;
 	
