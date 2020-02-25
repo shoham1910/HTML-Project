@@ -214,9 +214,9 @@ async function executeSearchQuery(un,ps){
   var un=req.param('username');
   var ps=req.param('password');
   console.log(`${un}${ps}${un}${ps}`);
-  rows=await executeSearchQuery(un,ps);
-  console.log(`${JSON.stringify(rows)}`);
-  if (JSON.stringify(rows).length>0){
+  answer=await executeSearchQuery(un,ps);
+  console.log(`${answer}`);
+  if (1){
     res.statusCode=302;
     res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
     res.end();
