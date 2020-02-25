@@ -15,12 +15,12 @@ body {
 #out_div{opacity:1; 
          position:relative;  
 		 left:50%;
-		 top:0px; 
+		
 		 padding:30px;
 		 background-color:rgba(255, 255, 255, 0.7);
 		 width:500;
-		 border:5px solid #158298;
 		 transform: translate(-50%,0%);
+		 border:5px solid #158298;
 		
 }
 
