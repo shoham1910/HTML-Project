@@ -285,36 +285,7 @@ app.post('/contact/contact.html', function(req, res) {
   //res.end();
 });
 
- var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-          user:'shoham1910@gmail.com',
-          pass:'956shoham'
-      }
-  });
 
-  var mailOptions = {
-      from: myMail,
-      to: 'shoham1910@gmail.com',
-      subject: 'We Will Contact You About:',
-      //text: 'Your comment about'+reason+'was sign into our system.\nYour comment is:\n'+comment+'Form submited by: ' + name 
-      text: 'hello'
-
-  };
-
-
-  transporter.sendMail(mailOptions,function(error, info){
-        if (error){
-			console.log('Email not!! sent:');
-            console.log(error);
-            res.writeHead(404);
-            res.end();                    
-        }
-        else{
-            console.log('Email sent: ' + info.response);
-        } 
-
-  });
 // start the server
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
