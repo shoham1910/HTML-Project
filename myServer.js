@@ -215,10 +215,11 @@ async function executeInsertQuery(un,ps){
   app.post('/signUp/signUp.html', async function(req, res) {
   var un=req.param('username');
   var ps=req.param('password');
-  for(var k=0;k<ps.length;k++ ){
-    ps[k]=ps[k]+3;
+  var pps="";
+      for(var k=0;k<ps.toString().length;k++ ){
+        pps+=String.fromCharCode(ps.toString().charCodeAt(k)+3);
   }
-  answer=await executeInsertQuery(un,ps);
+  answer=await executeInsertQuery(un,pps);
   console.log(answer);
   if (answer){
     res.statusCode=201;
@@ -227,9 +228,8 @@ async function executeInsertQuery(un,ps){
   }
   else
   {
-    res.setHeader("content-type","text/html");
-   res.send(`<!DOCTYPE html><html><head><title>Username allready exist please return and enter other Username</title>
-</head><body></body></html>`);
+    res.statusCode=404;
+   res.send("Username allready exist please return and enter other Username");
    res.end();
   }
 });
