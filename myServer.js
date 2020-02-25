@@ -293,16 +293,16 @@ app.post('/contact/contact.html', function(req, res) {
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user:myMail,
-          pass:myPassword
+          user:'shoham1910@gmail.com',
+          pass:'956shoham'
       }
   });
 
   var mailOptions = {
       from: myMail,
-      to: myMail,
+      to: 'shoham1910@gmail.com',
       subject: 'We Will Contact You About:',
-      text: 'Your comment about'+reason+'was sign into our system.\nYour comment is:\n'+comment+'by'+name
+      text: 'Your comment about "+reason+" was sign into our system.\nYour comment is:\n"+comment'
   };
 
 
