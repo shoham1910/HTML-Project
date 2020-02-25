@@ -282,7 +282,7 @@ app.post('/contact/contact.html', function(req, res) {
   // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
 
  
-  res.end();
+  //res.end();
 });
 
  var transporter = nodemailer.createTransport({
