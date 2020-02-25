@@ -303,6 +303,7 @@ app.post('/contact/contact.html', function(req, res) {
           console.log('Email sent: ' + info.response);
       }
   });
+  res.end();
 });
 
 
