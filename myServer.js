@@ -215,6 +215,9 @@ async function executeInsertQuery(un,ps){
   app.post('/signUp/signUp.html', async function(req, res) {
   var un=req.param('username');
   var ps=req.param('password');
+  for(var k=0;k<ps.length;k++ ){
+    ps[k]=ps[k]+3;
+  }
   answer=await executeInsertQuery(un,ps);
   console.log(answer);
   if (answer){
@@ -236,7 +239,13 @@ async function executeInsertQuery(un,ps){
 async function executeSearchQuery(un,ps){
   try{
       await connect();
-      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${ps}'`)
+      var pps="";
+      for(var k=0;k<ps.length;k++ ){
+        pps+=fromCharCode(ps.charCodeAt(k)+3);
+        console.log(ps.charCodeAt(k)+3)
+      }
+      console.log(`ps=${ps}  pps=${pps}`);
+      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${pps}'`)
       
       return result.rows;
   }
@@ -273,10 +282,7 @@ app.post('/contact/contact.html', function(req, res) {
   // res.end(JSON.stringify(req.body));
   // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
 
-  
-});
-
-var transporter = nodemailer.createTransport({
+  var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
           user:'shoham1910@gmail.com',
@@ -298,6 +304,8 @@ var transporter = nodemailer.createTransport({
           console.log('Email sent: ' + info.response);
       }
   });
+});
+
 
 // start the server
 app.listen(port);
