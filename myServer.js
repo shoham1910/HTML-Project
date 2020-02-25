@@ -196,7 +196,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 async function executeInsertQuery(un,ps){
   try{
       await connect();
-      const resu=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${ps}'`)
+      const resu=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}'`)
       if(resu.rows.length>0) return false;
       await client.query(`INSERT INTO public."User"("Username", "Password") VALUES ('${un}', '${ps}');`)
       
