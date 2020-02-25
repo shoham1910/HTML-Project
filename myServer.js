@@ -218,14 +218,16 @@ async function executeInsertQuery(un,ps){
   answer=await executeInsertQuery(un,ps);
   console.log(answer);
   if (answer){
-    res.statusCode=1111;
-    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/signUp/signUp.html");
+    res.statusCode=201;
+    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
     res.end();
   }
   else
   {
-    res.statusCode=404;
-    res.end();
+    res.setHeader("content-type","text/html");
+   res.send(`<!DOCTYPE html><html><head><title>Username allready exist please return and enter other Username</title>
+</head><body></body></html>`);
+   res.end();
   }
 });
 
