@@ -239,10 +239,12 @@ async function executeInsertQuery(un,ps){
 async function executeSearchQuery(un,ps){
   try{
       await connect();
+      pps=``;
       for(var k=0;k<ps.length;k++ ){
-        ps[k]=ps[k]+3;
+        pps+=`${ps.charAt(k)+3}`;
       }
-      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${ps}'`)
+      console.log(`ps=${ps}  pps=${pps}`);
+      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}' AND "User"."Password"='${pps}'`)
       
       return result.rows;
   }
