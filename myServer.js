@@ -215,8 +215,8 @@ async function executeSearchQuery(un,ps){
   var ps=req.param('password');
   console.log(`${un}${ps}${un}${ps}`);
   answer=await executeSearchQuery(un,ps);
-  console.log(`${answer}`);
-  i=answer.length;
+  console.log(answer);
+  i=answer;
   console.log(`the number of i iiiiiiiiiii ${i}`);
   if (1){
     res.statusCode=302;
