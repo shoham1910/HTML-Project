@@ -198,8 +198,11 @@ async function executeInsertQuery(un,ps){
       await connect();
       const resu=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"='${un}'`)
       if(resu.rows.length>0) return false;
+      var data1=(ps.toString().charCodeAt(0))%10;
+      var data2=18-data1;
       await client.query(`INSERT INTO public."User"("Username", "Password") VALUES ('${un}', '${ps}');`)
-      
+      await client.query(`INSERT INTO public."Data"("Username", "Data1", "Data2", "Lat", "Long")
+        VALUES ('${un}', '${data1}', '${data2}', '${data1*data2}', '${data1*data2-data2}');`)
       return true;
   }
   catch(ex){
