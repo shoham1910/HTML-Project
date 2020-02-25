@@ -260,16 +260,23 @@ async function executeSearchQuery(un,ps){
   var un=req.param('username');
   var ps=req.param('password');
   answer=await executeSearchQuery(un,ps);
-  if (answer.length>0){
-    res.statusCode=302;
-    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
-    res.end();
+  try{
+    if (answer.length>0){
+      res.statusCode=302;
+      res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
+      res.end();
+    }
+    else
+    {
+      res.statusCode=404;
+      res.send("Your Username or Password is wrong.")
+      res.end();
+    }
   }
-  else
-  {
+  catch(e){
     res.statusCode=404;
-    res.send("Your Username or Password is wrong.")
-    res.end();
+      res.send("Your Username or Password is wrong.")
+      res.end();
   }
 });
 
