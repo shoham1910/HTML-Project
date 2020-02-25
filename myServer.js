@@ -279,9 +279,6 @@ app.post('/contact/contact.html', function(req, res) {
   // res.end(JSON.stringify(req.body));
   // console.log(name + ' ' + mail+ ' ' + phone + ' ' + reason+ ' ' + comment);
 
-
-});
-
   var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
