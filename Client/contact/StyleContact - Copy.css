@@ -13,19 +13,16 @@ body {
 	}
 	
 #out_div{opacity:1; 
-         position:relative;  
-		 left:50%;
-		 top:0px; 
-		 padding:30px;
-		 background-color:rgba(255, 255, 255, 0.7);
-		 width:500;
+         position:relative; 
+		 top:100px; 
+		 background-color:rgba(255, 255, 255, 0.7);  
 		 border:5px solid #158298;
-		 transform: translate(-50%,0%);
-		
+         width:50%;
+         left:25%;
 }
 
 .inputs{margin: -8px;
-	width:80%;}
+	width:200px;}
 
 #comment{}
 form#form {
@@ -34,7 +31,7 @@ form#form {
 img#telephone {
     vertical-align: middle;
     border-style: none;
-    padding: 15px;
+    padding: 30px;
     margin-top: -30;
 }
 
@@ -42,9 +39,9 @@ img#location{
     vertical-align: middle;
     border-style: none;
     margin-top: -60px;
-    padding: 10px;
+    padding: 30px;
 }
-img#clerk{padding: 10px;
+img#clerk{padding: 30px;
 }
 
 h1{text-align:center;}

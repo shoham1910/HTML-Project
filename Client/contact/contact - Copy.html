@@ -15,8 +15,8 @@
 
 </head>
 <body>
- <div class="row text-center" style="padding:30px;">
-   <div style="padding:5px;"class=" main-section"id="out_div">
+ 
+ <div id="out_div">
 
 	<h1  id="logg" style="text-align:center; color:#158298;"> Contact Us</h1>
 	
@@ -24,9 +24,10 @@
 	
 	<h2 style="text-align:center;">We Woul'd Love To Help You</h2>
 	
-	<div  id="div_enterInfo">
-		<div class="row" >
-			
+	<div class="container" id="div_enterInfo">
+		<div class="row">
+			<div class="col-md-1">
+			</div>
 			<div class="col-md-6">
 				<form id="ContactForm" action='/contact/contact.html' method="POST" autocomplete="off">
 					<div class="alert" id="alert-msg" style= "text-align:left";></div>
@@ -47,12 +48,14 @@
 					<button type="submit" form="ContactForm" class="btn btn-primary" onclick="return submitClick()" style="margin-top: -5px;">Send</button>
 				</form>
 			</div>
-			<div style="padding:3px;"  class="text-center col-md-6">
-				<div >
-				    
+			<div class="col-md-5">
+				<div class="row coml-md-12">
+				    <div class="coml-md-1">
 					<img id="clerk" src="..\..\Images\clerk.png">
+					</div>
+					  <div style="text-align:center; padding:30px;" class="coml-md-11">
 					<button type="button" class="btn btn-dark">Contact Support</button>
-					 
+					  </div>
 				</div>
 				<div>
 					<hr>
@@ -60,13 +63,12 @@
 				</div>
 				<div>
 					<hr>
-					<img id="telephone" src="..\..\Images\telephone.png"><label><br/>+972-50-725-7735 <br/>+972-50-725-7735 </label>
+					<img id="telephone" src="..\..\Images\telephone.png"><label><br/>+972-50-725-7735 Tamir<br/>+972-50-725-7735 Tamir</label>
 				</div>
 			</div>
 		</div>
 	</div>
 
-</div>
 </div>
 <script src=ScriptContact.js></script>
 </body>
