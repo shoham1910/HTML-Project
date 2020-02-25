@@ -5,11 +5,11 @@ var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 const {Client}=require('pg');//equlast to: const Client=require('pg').Client
 const client=new Client({
-  user:'postgres',
-  password:'241218',
-  host:'localhost',
+  user:'kclwxkjlsexnif',
+  password:'9ef64ab0ef6905b928e01f01ec711f83476b1a779be0ec69bff08b53a614f754',
+  host:'ec2-54-247-72-30.eu-west-1.compute.amazonaws.com',
   port: 5432,
-  database:'workDB'
+  database:'db6q7q4goe5pnk'
 });
 var app = express();
 
