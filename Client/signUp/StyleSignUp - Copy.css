@@ -25,8 +25,6 @@ img{ opacity:0.3;}
 input.text_fields
 {color:grey; 
 border-color:#158298;
-width:80%;
-
 
 }
 
@@ -37,14 +35,10 @@ width:80%;
 	color: #712b29;
     background-color: #f7dddc;
     border-color: #f4cfce;
-	width:100%;
-	
-	
 }
 div{ font-family:courier New; 
      color:green;
      text-align:center;
-	 
 }	 
 
 
@@ -52,7 +46,7 @@ div{ font-family:courier New;
 button{
         color:white; 
         background-color:#158298; 
-		padding: 5px;
-		width:100%;
+		padding: 5px 148px;
+}
 a{ font-weight:bold;
 }
