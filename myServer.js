@@ -25,7 +25,7 @@ var imagePath=path.join(__dirname,'Images');
 var logInPath=path.join(clientPath,'logIn');
 var contactPath=path.join(clientPath,'contact');
 var signUpPath=path.join(clientPath,'signUp');
-var tablesPath=path.join(clientPath,'tables');
+
 
 
 
@@ -34,7 +34,7 @@ app.use('/logIn',express.static(logInPath));
 app.use('/Images',express.static(imagePath));
 app.use('/contact',express.static(contactPath))
 app.use('/signUp',express.static(signUpPath))
-app.use('/tables',express.static(tablesPath))
+
 
 app.get('/Images/view.jpg',(req, res) =>{
   res.sendFile(__dirname + './Images/view.jpg');
@@ -47,9 +47,7 @@ app.get('/', async(req, res) => {
   res.end();
 });
 
-app.get('/tables', async(req, res) => {
-	//res.sendFile(__dirname + './Client/logIn/logIn.html');
-   //res.sendFile(window.location.href + '/logIn/logIn.html');
+function getTables(){
    begin=`<!DOCTYPE  html>
    <!-- saved from url=(0022)http://localhost:3000/ -->
    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -87,10 +85,10 @@ app.get('/tables', async(req, res) => {
    last3='`#usersDataTable`'
    last4=`).DataTable();});</script></body></html>`
 
-   res.setHeader("content-type","text/html");
-   res.send(`${begin}${usersTable}${middle}${usersDataTable}${last}${last1}${last2}${last3}${last4}`);
-   res.end();
-});
+   
+   return(`${begin}${usersTable}${middle}${usersDataTable}${last}${last1}${last2}${last3}${last4}`);
+}
+
 async function connect(){
   try{
     await client.connect();
@@ -222,7 +220,7 @@ async function executeInsertQuery(un,ps){
   answer=await executeInsertQuery(un,pps);
   console.log(answer);
   if (answer){
-    res.statusCode=201;
+    res.statusCode=302;
     res.setHeader("Location","http://html-project2020.herokuapp.com"+"/logIn/logIn.html");
     res.end();
   }
@@ -262,8 +260,8 @@ async function executeSearchQuery(un,ps){
   answer=await executeSearchQuery(un,ps);
   try{
     if (answer.length>0){
-      res.statusCode=302;
-      res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
+      res.setHeader("content-type","text/html");
+      res.send(getTables());
       res.end();
     }
     else
