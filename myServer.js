@@ -293,7 +293,6 @@ app.post('/contact/contact.html', function(req, res) {
       from: myMail,
       to: 'shoham1910@gmail.com',
       subject: 'We Will Contact You About:',
-	 text:       'Hello Masters,\nA support form has been submited:\n' + 'Form submited by: ' + name + '\nEmail address: ' + email + '\nConcerning: ' + subject + '\nDescription:\n' + description
       text: 'Your comment about'+reason+'was sign into our system.\nYour comment is:\n'+comment+'Form submited by: ' + name 
   };
 
