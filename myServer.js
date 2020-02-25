@@ -195,6 +195,37 @@ app.get('/signUp/contact.html', (req, res) => {
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+async function executeSearchQuery(un,ps){
+  try{
+      await connect();
+      const result=await client.query(`SELECT * FROM public."User" WHERE "User"."Username"=${un} AND "User"."Password"=${ps}`)
+      
+      return result.rows;
+  }
+  catch(ex){
+      console.log('Failed to execute '+ex)
+  }
+  finally{
+      await client.end
+  }
+}
+
+  app.post('/logIn/logIn.html', async function(req, res) {
+  var un=req.param('username');
+  var ps=req.param('password');
+  rows=await executeSearchQuery(un,ps)
+  if (rows.length>0){
+    res.statusCode=302;
+    res.setHeader("Location","http://html-project2020.herokuapp.com"+"/tables");
+    res.end();
+  }
+  else
+  {
+    res.statusCode=404;
+    res.end();
+  }
+});
+
 app.post('/contact/contact.html', function(req, res) {
   var name = req.param('name');
   var mail = req.param('Email');
